@@ -1,0 +1,31 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ObtainSystemResourcesService WSDL service -->
+
+  <service name="ObtainSystemResources" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.hackday.successfactors.com"/>
+      <parameter name="wsdlServiceElement" value="ObtainSystemResourcesService"/>
+      <parameter name="schemaQualified" value="http://service.hackday.successfactors.com"/>
+      <parameter name="wsdlServicePort" value="ObtainSystemResources"/>
+      <parameter name="className" value="com.successfactors.hackday.service.ObtainSystemResourcesSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ObtainSystemResources"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getResources" qname="operNS:getResources" xmlns:operNS="http://service.hackday.successfactors.com" returnQName="retNS:getResourcesReturn" xmlns:retNS="http://service.hackday.successfactors.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:resourceName" xmlns:pns="http://service.hackday.successfactors.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:resourceType" xmlns:pns="http://service.hackday.successfactors.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:isSecure" xmlns:pns="http://service.hackday.successfactors.com" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getResources"/>
+
+  </service>
+</deployment>

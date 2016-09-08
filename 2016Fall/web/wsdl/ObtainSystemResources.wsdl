@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.hackday.successfactors.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.hackday.successfactors.com" xmlns:intf="http://service.hackday.successfactors.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.hackday.successfactors.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getResources">
+    <complexType>
+     <sequence>
+      <element name="resourceName" type="xsd:string"/>
+      <element name="resourceType" type="xsd:string"/>
+      <element name="isSecure" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getResourcesResponse">
+    <complexType>
+     <sequence>
+      <element name="getResourcesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getResourcesResponse">
+
+      <wsdl:part element="impl:getResourcesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getResourcesRequest">
+
+      <wsdl:part element="impl:getResources" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ObtainSystemResources">
+
+      <wsdl:operation name="getResources">
+
+         <wsdl:input message="impl:getResourcesRequest" name="getResourcesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getResourcesResponse" name="getResourcesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ObtainSystemResourcesSoapBinding" type="impl:ObtainSystemResources">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getResources">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getResourcesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getResourcesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ObtainSystemResourcesService">
+
+      <wsdl:port binding="impl:ObtainSystemResourcesSoapBinding" name="ObtainSystemResources">
+
+         <wsdlsoap:address location="http://localhost:8080/HackDay2016Fall/services/ObtainSystemResources"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
